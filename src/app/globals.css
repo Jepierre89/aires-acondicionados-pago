@@ -3,31 +3,90 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+	background-color: rgba(255, 255, 255, 0.2);
+	overflow: hidden;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+:root::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url("../assets/BACKGROUND.png"); /* Fondo blanco con opacidad 0.9 */
+	opacity: 0.4;
+	background-repeat: no-repeat;
+	background-size: cover;
+	z-index: -1; /* Coloca este pseudo-elemento detrás de todo el contenido */
+}
+
+.toggle {
+	position: relative;
+	display: inline-block;
+	margin-top: 0.5rem;
+	width: 40px;
+	height: 20px;
+	background-color: hsl(0, 0%, 85%);
+	border-radius: 25px;
+	cursor: pointer;
+	transition: background-color 0.25s ease-in;
+}
+.toggle::after {
+	content: "";
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 15px;
+	height: 15px;
+	background-color: white;
+	border-radius: 50%;
+	transition: all 0.25s ease-out;
+}
+#cb-toggle:checked + .toggle {
+	background-color: #fd761c;
+}
+#cb-toggle:checked + .toggle::after {
+	transform: translateX(24px);
+}
+.hide-me {
+	opacity: 0;
+	height: 0;
+	width: 0;
+}
+
+/* Animación para aparecer el modal */
+@keyframes modalAppear {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/* Animación para desaparecer el modal */
+@keyframes modalDisappear {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+/* Clase para aplicar la animación de aparecer */
+.modal-appear {
+	animation: modalAppear 0.3s linear forwards;
+}
+
+/* Clase para aplicar la animación de desaparecer */
+.modal-disappear {
+	animation: modalDisappear 0.3s linear forwards;
 }
