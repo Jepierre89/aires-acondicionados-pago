@@ -6,6 +6,7 @@ import BuildingSelect from "../components/SelectBuilding/BuildingSelect";
 import Button from "../components/CustomComponents/Button";
 import { useRouter } from "next/navigation";
 import ModalError from "../components/modals/ModalError";
+import Footer from "../components/CustomComponents/Footer";
 
 export default function Page() {
 	const [activeModalError, setActiveModalError] = useState(false);
@@ -30,12 +31,13 @@ export default function Page() {
 				<h2>{LangStrings.PickApartmentView.welcomeMessage}</h2>
 			</header>
 			<article className="font-normal text-lg text-start h-min items-center">
-				<p>{LangStrings.PickApartmentView.informationMessage1}</p>
-				<br />
+				<p className="mb-2">
+					{LangStrings.PickApartmentView.informationMessage1}
+				</p>
 				<p>{LangStrings.PickApartmentView.informationMessage2}</p>
 			</article>
 			<form
-				className="w-full flex items-center flex-col my-8 gap-3"
+				className="w-full flex items-center flex-col my-4 gap-3"
 				onSubmit={handleSubmit}
 			>
 				<div>
@@ -60,6 +62,8 @@ export default function Page() {
 				activeModalError={activeModalError}
 				setActiveModalError={setActiveModalError}
 			/>
+
+			<Footer />
 		</main>
 	);
 }

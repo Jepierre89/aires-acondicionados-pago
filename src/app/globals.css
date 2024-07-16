@@ -53,7 +53,7 @@ body {
 	background-color: #fd761c;
 }
 #cb-toggle:checked + .toggle::after {
-	transform: translateX(24px);
+	transform: translateX(20px);
 }
 .hide-me {
 	opacity: 0;
