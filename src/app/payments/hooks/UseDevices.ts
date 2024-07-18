@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { UsePaymentContext } from "../context/PaymentContext";
+import { Device } from "../interfaces/Device";
 
 export default function UseDevices() {
-	const [devices, setDevices] = useState([]);
+	const [devices, setDevices] = useState<Device[]>([]);
 	const { apartmentId } = UsePaymentContext();
 
 	useEffect(() => {

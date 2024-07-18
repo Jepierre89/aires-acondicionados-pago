@@ -1,5 +1,5 @@
 "use client";
-import React, { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { UsePaymentContext } from "../context/PaymentContext";
 import ApartmentSelect from "../components/SelectApartment/ApartmentSelect";
 import BuildingSelect from "../components/SelectBuilding/BuildingSelect";
@@ -10,7 +10,8 @@ import Footer from "../components/CustomComponents/Footer";
 
 export default function Page() {
 	const [activeModalError, setActiveModalError] = useState(false);
-	const { LangStrings, lang, buildingId, apartmentId } = UsePaymentContext();
+	const { LangStrings, lang, buildingId, apartmentId, setLangSwitchDisplay } =
+		UsePaymentContext();
 
 	const router = useRouter();
 
@@ -23,9 +24,12 @@ export default function Page() {
 			setActiveModalError(true);
 		}
 	};
+	useEffect(() => {
+		setLangSwitchDisplay(true);
+	});
 
 	return (
-		<main className="h-screen max-w-2xl px-6">
+		<>
 			<header className="text-center text-secondary-700 font-bold text-2xl">
 				<h1>{LangStrings.PickApartmentView.hello}</h1>
 				<h2>{LangStrings.PickApartmentView.welcomeMessage}</h2>
@@ -64,6 +68,6 @@ export default function Page() {
 			/>
 
 			<Footer />
-		</main>
+		</>
 	);
 }

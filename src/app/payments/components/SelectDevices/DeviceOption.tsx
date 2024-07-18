@@ -23,12 +23,12 @@ export default function DeviceOption({ device }: { device: Device }) {
 	};
 
 	return (
-		<tr key={device.id}>
-			<td className="flex justify-center items-center gap-1">
+		<tr key={device.id} className="border-t">
+			<td className="flex justify-center items-center gap-4 p-4">
 				<input
 					type="checkbox"
 					name="devicesId"
-					className="w-6 h-6"
+					className="w-max h-max scale-150"
 					onChange={handleSelect}
 					checked={devicesSelected.includes(device)}
 				/>
@@ -36,7 +36,7 @@ export default function DeviceOption({ device }: { device: Device }) {
 					Aire acondicionado {device.id}
 				</label>
 			</td>
-			<td className="w-1/3 text-center">
+			<td className="w-1/3 text-center p4">
 				{hours}h {minutes}m
 			</td>
 		</tr>

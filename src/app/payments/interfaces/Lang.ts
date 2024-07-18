@@ -37,6 +37,7 @@ interface PickApartmentView {
 
 interface SpaceInformation {
 	pickDeviceToCharge: string;
+	spaceInformation: string;
 }
 
 interface PickTimeToCharge {

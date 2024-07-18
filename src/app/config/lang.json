@@ -26,7 +26,8 @@
       "pickTheNumber": "Selecciona el número correspondiente"
     },
     "SpaceInformation": {
-      "pickDeviceToCharge": "Selecciona el dispositivo que vas a recargar"
+      "pickDeviceToCharge": "Selecciona el dispositivo que vas a recargar",
+      "spaceInformation":  "Información de tu espacio"
     },
     "PickTimeToCharge": {
       "TimeOptions": "Paquetes de tiempo",
@@ -72,7 +73,8 @@
       "pickTheNumber": "Pick the corresponding number"
     },
     "SpaceInformation": {
-      "pickDeviceToCharge": "Select the device you want to recharge"
+      "pickDeviceToCharge": "Select the device you want to recharge",
+      "spaceInformation": "Space information"
     },
     "PickTimeToCharge": {
       "TimeOptions": "Time packages",

@@ -3,7 +3,7 @@ import { UsePaymentContext } from "../context/PaymentContext";
 type Props = {};
 
 export default function RadioLang({}: Props) {
-	const { setLang, lang } = UsePaymentContext();
+	const { setLang, lang, langSwitchDisplay } = UsePaymentContext();
 	const handleChangeLang = (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (!e.target.checked) {
 			setLang("es");
@@ -12,7 +12,12 @@ export default function RadioLang({}: Props) {
 		}
 	};
 	return (
-		<section className="flex items-center flex-col gap-2 my-3">
+		<section
+			className={`items-center flex-col gap-2 my-3`}
+			style={{
+				display: langSwitchDisplay ? "flex" : "none",
+			}}
+		>
 			<header>
 				<label className="text-xs font-normal">
 					{lang === "es" ? "Selecciona tu idioma" : "Choice your lang"}
