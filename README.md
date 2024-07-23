@@ -2,7 +2,7 @@
 
 ## Intalación:
 
-``sh
+```sh
 $ npm install
 $ npm run dev
 ```
