@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AIR from "@/assets/AIR.svg";
 import Image from "next/image";
 import DELETE from "@/assets/DELETE.svg";
@@ -25,6 +25,19 @@ const ServiceFees: React.FC<ServiceFeesProps> = ({ devicesId }) => {
 		totalTime,
 		setTotalTime,
 	} = UsePaymentContext();
+
+	useEffect(() => {
+		// Retrieve initial state from local storage or context if available
+		const savedServiceFeesSelected = JSON.parse(
+			localStorage.getItem("serviceFeesSelected") || "[]"
+		);
+		const savedTotalPrice = parseFloat(
+			localStorage.getItem("totalPrice") || "0"
+		);
+
+		setServiceFeesSelected(savedServiceFeesSelected);
+		setTotalPrice(savedTotalPrice);
+	}, [setServiceFeesSelected, setTotalPrice]);
 
 	const handleDeleteAir = () => {
 		setDevicesSelected(
@@ -64,21 +77,15 @@ const ServiceFees: React.FC<ServiceFeesProps> = ({ devicesId }) => {
 	};
 
 	return (
-		<article className="flex flex-col max-w-72">
-			<div className="flex items-center w-full justify-start">
-				<picture className="">
+		<article className="flex flex-col max-w-2xl my-8">
+			<div className="flex items-center w-full justify-between flex-grow my-2">
+				<picture>
 					<Image src={AIR} alt="AIR" width={32} height={32} className="mr-2" />
 				</picture>
 				<h3 className="flex-1">Aire acondicionado {devicesId}</h3>
-				<picture onClick={handleDeleteAir} className="hover:cursor-pointer">
-					<Image
-						src={DELETE}
-						alt="DELETE"
-						width={32}
-						height={32}
-						className="mr-2"
-					/>
-				</picture>
+				{/* <picture onClick={handleDeleteAir} className="hover:cursor-pointer">
+					<Image src={DELETE} alt="DELETE" width={24} height={24} />
+				</picture> */}
 			</div>
 			<div className="w-full">
 				<Select onChange={handleSelectChange}>

@@ -5,7 +5,7 @@ import { Device } from "../interfaces/Device";
 
 export default function UseDevices() {
 	const [devices, setDevices] = useState<Device[]>([]);
-	const { apartmentId } = UsePaymentContext();
+	const { apartmentId, setLoading } = UsePaymentContext();
 
 	useEffect(() => {
 		const getData = async () => {
@@ -22,6 +22,7 @@ export default function UseDevices() {
 			};
 
 			try {
+				setLoading(true);
 				const response = await axios.get(
 					`${process.env.NEXT_PUBLIC_API_URL}/devices`,
 					query
@@ -29,13 +30,15 @@ export default function UseDevices() {
 				setDevices(response.data);
 			} catch (error) {
 				console.log(error);
+			} finally {
+				setLoading(false);
 			}
 		};
 
 		if (apartmentId) {
 			getData();
 		}
-	}, [apartmentId]);
+	}, [apartmentId, setLoading]);
 
 	return { devices };
 }

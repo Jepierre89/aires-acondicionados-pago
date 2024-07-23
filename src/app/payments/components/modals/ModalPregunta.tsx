@@ -1,25 +1,25 @@
 import React, { useEffect } from "react";
 import Button from "../CustomComponents/Button";
 
-export default function ModalSalir({
-	activeModalSalir,
-	setActiveModalSalir,
+export default function ModalPregunta({
+	activeModalPregunta,
+	setActiveModalPregunta,
 }: {
-	activeModalSalir: boolean;
-	setActiveModalSalir: Function;
+	activeModalPregunta: boolean;
+	setActiveModalPregunta: Function;
 }) {
 	const [modalVisible, setModalVisible] = React.useState(false);
 
 	useEffect(() => {
-		if (activeModalSalir) {
+		if (activeModalPregunta) {
 			setModalVisible(true);
 		} else {
 			setModalVisible(false);
 		}
-	}, [activeModalSalir]);
+	}, [activeModalPregunta]);
 
 	const closeModal = () => {
-		setActiveModalSalir(false);
+		setActiveModalPregunta(false);
 	};
 
 	return modalVisible ? (

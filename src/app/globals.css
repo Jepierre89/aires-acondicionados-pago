@@ -33,7 +33,7 @@ body {
 	margin-top: 0.5rem;
 	width: 40px;
 	height: 20px;
-	background-color: hsl(0, 0%, 85%);
+	background-color: #09f;
 	border-radius: 25px;
 	cursor: pointer;
 	transition: background-color 0.25s ease-in;

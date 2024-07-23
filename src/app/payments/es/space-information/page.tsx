@@ -1,16 +1,28 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { UsePaymentContext } from "../../context/PaymentContext";
 import DevicesCheckTable from "../../components/SelectDevices/DevicesCheckTable";
 import Button from "../../components/CustomComponents/Button";
 import { useRouter } from "next/navigation";
 
-export default function page() {
-	const { LangStrings, buildingId, apartmentId, devicesSelected, lang } =
-		UsePaymentContext();
+export default function SpaceInformation() {
+	const {
+		LangStrings,
+		buildingId,
+		apartmentId,
+		devicesSelected,
+		lang,
+		setDevicesSelected,
+		setServiceFeesSelected,
+	} = UsePaymentContext();
 
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const router = useRouter();
+
+	useEffect(() => {
+		setDevicesSelected([]);
+		setServiceFeesSelected([]);
+	}, [setDevicesSelected, setServiceFeesSelected]);
 
 	const handleClick = () => {
 		if (devicesSelected.length > 0) {
@@ -20,7 +32,7 @@ export default function page() {
 
 	return (
 		<>
-			<header className="text-start">
+			<header className="text-start border-b border-primary-300">
 				<h1 className="font-bold text-2xl text-secondary-700 my-2 text-center">
 					{LangStrings.SpaceInformation.spaceInformation}
 				</h1>

@@ -1,6 +1,7 @@
 "use client";
+import Loading from "./components/Loading";
 import { PaymentProvider } from "./context/PaymentContext";
-import ToggleLang from "@/app/payments/components/ToggleLang";
+import ToggleLang from "./components/ToggleLang";
 
 export default function RootLayout({
 	children,
@@ -10,7 +11,10 @@ export default function RootLayout({
 	return (
 		<PaymentProvider>
 			<ToggleLang />
-			<main className="h-screen max-w-sm px-7">{children}</main>
+			<main className="max-w-2xl flex flex-col items-center h-screen overflow-auto">
+				{children}
+			</main>
+			<Loading />
 		</PaymentProvider>
 	);
 }

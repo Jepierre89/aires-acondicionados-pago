@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={ubuntu.className}>{children}</body>
+			<body className={`${ubuntu.className}  overflow-y-auto`}>{children}</body>
 		</html>
 	);
 }

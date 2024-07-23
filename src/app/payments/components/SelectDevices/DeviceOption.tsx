@@ -24,7 +24,7 @@ export default function DeviceOption({ device }: { device: Device }) {
 
 	return (
 		<tr key={device.id} className="border-t">
-			<td className="flex justify-center items-center gap-4 p-4">
+			<td className="flex justify-center items-center gap-4 p-4 h-24">
 				<input
 					type="checkbox"
 					name="devicesId"

@@ -7,9 +7,17 @@ export default function SpaceLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const { setLangSwitchDisplay } = UsePaymentContext();
+	const { setLangSwitchDisplay, loading } = UsePaymentContext();
 	useEffect(() => {
 		setLangSwitchDisplay(false);
 	});
-	return <main className="h-full flex flex-col py-6">{children}</main>;
+	return (
+		<section
+			className={`h-full py-6 ${
+				loading ? "hidden" : "modal-appear flex flex-col"
+			}`}
+		>
+			{children}
+		</section>
+	);
 }

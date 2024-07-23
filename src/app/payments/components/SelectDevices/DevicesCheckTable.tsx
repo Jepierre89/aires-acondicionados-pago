@@ -15,7 +15,7 @@ export default function DevicesCheckTable() {
 					</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody className="overflow-hidden">
 				<DeviceCheckOption devices={devices} />
 			</tbody>
 		</table>
