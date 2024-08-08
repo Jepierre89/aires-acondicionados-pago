@@ -10,7 +10,9 @@
       "device": "Dispositivo",
       "remainTime": "Tiempo disponible",
       "air": "Aire",
-      "select": "Seleccionar"
+      "select": "Seleccionar",
+      "editDetails": "Editar detalles",
+      "exit": "Salir"
     },
     "ModalMessages":{
         "currentSpace": "El espacio seleccionado",
@@ -41,7 +43,7 @@
       "paymentSummary": "Resumen de compra: ",
       "selectedDevices": "Dispositivos seleccionados: ",
       "timeToUsePerDevice": "Tiempo de uso para cada uno: ",
-      "totalPayment": "Valor a pagar"
+      "totalPayment": "Valor a pagar:"
     },
     "FinalPaymentSummary": {
       "paymentSummary": "Resumen de pago",
@@ -56,25 +58,27 @@
       "ubication": "Location",
       "apartmentOrRoom": "Apartment or room",
       "continue": "Continue",
-      "return": "Return",
-      "returnToStart": "Return to start",
+      "return": "back",
+      "returnToStart": "Back to start",
       "accommodation": "Accommodation",
       "device": "Device",
       "remainTime": "Remaining time",
       "air": "Air",
-      "select": "Select"
+      "select": "Select",
+      "editDetails": "Edit details",
+      "exit": "Exit"
     },
     "PickApartmentView": {
       "hello": "Hello!",
       "welcomeMessage": "Here you can recharge the use of air conditioning",
       "informationMessage1": "Recharge the air conditioning usage time of your space at any time.",
       "informationMessage2": "Select your accommodation and apartment or room number:",
-      "pickYourLocation": "Pick your location",
+      "pickYourLocation": "Pick your acommodation",
       "pickTheNumber": "Pick the corresponding number"
     },
     "SpaceInformation": {
       "pickDeviceToCharge": "Select the device you want to recharge",
-      "spaceInformation": "Space information"
+      "spaceInformation": "Acommodation information"
     },
     "PickTimeToCharge": {
       "TimeOptions": "Time packages",
@@ -88,7 +92,7 @@
       "paymentSummary": "Purchase summary: ",
       "selectedDevices": "Selected devices: ",
       "timeToUsePerDevice": "Time to use for each one: ",
-      "totalPayment": "Total payment"
+      "totalPayment": "Total payment:"
     },
     "FinalPaymentSummary": {
       "paymentSummary": "Payment summary",

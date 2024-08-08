@@ -13,7 +13,9 @@ export default function RadioLang({}: Props) {
 	};
 	return (
 		<section
-			className={`items-center flex-col gap-2 my-3 ${loading ? "hidden" : ""}`}
+			className={`items-center flex-col gap-2 my-3 ${
+				loading ? "hidden" : "modal-appear"
+			}`}
 			style={{
 				display: langSwitchDisplay ? "flex" : "none",
 			}}

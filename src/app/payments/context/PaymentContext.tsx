@@ -26,6 +26,10 @@ interface PaymentContextType {
 	LangStrings: Lang;
 	langSwitchDisplay: boolean;
 	setLangSwitchDisplay: (display: boolean) => void;
+	reference: string;
+	setReference: (reference: string) => void;
+	navDisplay: boolean;
+	setNavDisplay: (display: boolean) => void;
 }
 
 const PaymentContex = createContext<PaymentContextType | undefined>(undefined);
@@ -44,7 +48,7 @@ export const PaymentProvider = ({
 	children: React.ReactNode;
 }) => {
 	const [apartmentId, setApartmentId] = useState(9);
-	const [buildingId, setBuildingId] = useState(3);
+	const [buildingId, setBuildingId] = useState(-1);
 	const [loading, setLoading] = useState(true);
 	const [devicesSelected, setDevicesSelected] = useState([]);
 	const [serviceFeesSelected, setServiceFeesSelected] = useState([]);
@@ -52,12 +56,17 @@ export const PaymentProvider = ({
 	const [totalTime, setTotalTime] = useState("0h 0m");
 	const [lang, setLang] = useState("es");
 	const [langSwitchDisplay, setLangSwitchDisplay] = useState(true);
+	const [navDisplay, setNavDisplay] = useState(true);
+	const [reference, setReference] = useState("");
 
 	const router = useRouter();
 
 	useEffect(() => {
 		if (buildingId === -1 || apartmentId === -1) {
 			router.push(`/payments/${lang}`);
+		}
+		if (buildingId !== -1 && apartmentId !== -1) {
+			setLoading(false);
 		}
 	}, [router, lang, apartmentId, buildingId]);
 
@@ -89,6 +98,10 @@ export const PaymentProvider = ({
 				LangStrings,
 				langSwitchDisplay,
 				setLangSwitchDisplay,
+				reference,
+				setReference,
+				setNavDisplay,
+				navDisplay,
 			}}
 		>
 			{children}

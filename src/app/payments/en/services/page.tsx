@@ -5,23 +5,51 @@ import REMINDER from "@/assets/REMINDER.svg";
 import Image from "next/image";
 import ServiceFeeOptions from "../../components/SelectFees/ServiceFeeOptions";
 import { useRouter } from "next/navigation";
+import Button from "../../components/CustomComponents/Button";
 
 export default function Services() {
-	const { LangStrings, devicesSelected, apartmentId, buildingId, lang } =
-		UsePaymentContext();
+	const {
+		LangStrings,
+		devicesSelected,
+		apartmentId,
+		buildingId,
+		lang,
+		totalPrice,
+		serviceFeesSelected,
+		loading,
+		setLangSwitchDisplay,
+	} = UsePaymentContext();
 	const router = useRouter();
 	useEffect(() => {
+		setLangSwitchDisplay(false);
 		if (!apartmentId || !buildingId || devicesSelected.length <= 0) {
 			router.push(`/payments/${lang}`);
 		}
-	}, [apartmentId, buildingId, devicesSelected, lang, router]);
+	}, [
+		setLangSwitchDisplay,
+		apartmentId,
+		buildingId,
+		devicesSelected,
+		lang,
+		router,
+	]);
+
+	const handleClick = () => {
+		if (serviceFeesSelected.length === devicesSelected.length) {
+			router.push(`/payments/${lang}/summary`);
+		}
+	};
 	return (
-		<main className="max-w-2xl flex flex-col items-center">
-			<header className="text-center my-6">
+		<section
+			className={`h-full w-96 ${
+				loading ? "hidden" : "modal-appear flex flex-col items-center"
+			}`}
+		>
+			<header className="text-center my-4">
 				<h1 className="text-secondary-700 font-bold text-2xl">
 					{LangStrings.PickTimeToCharge.TimeOptions}
 				</h1>
-				<h2 className="text-secondary-700 font-bold text-lg">
+				<h2 className="text-secondary-700 font-bold text-lg px-3">
 					{LangStrings.PickTimeToCharge.informationMessage1}
 				</h2>
 			</header>
@@ -52,9 +80,18 @@ export default function Services() {
 					</li>
 				</ul>
 			</article>
-			<section className="my-6">
+			<section className="my-3 overflow-y-auto">
 				<ServiceFeeOptions />
 			</section>
-		</main>
+			<section className="text-center mb-5">
+				<h2 className="font-bold text-2xl">Total: ${totalPrice}COP</h2>
+			</section>
+			<Button
+				text={LangStrings.GeneralMessages.continue}
+				forward
+				handleClick={handleClick}
+				disabled={serviceFeesSelected.length !== devicesSelected.length}
+			/>
+		</section>
 	);
 }

@@ -9,7 +9,7 @@ export default function Loading() {
 	return (
 		<div
 			className={`absolute ${
-				loading ? "modal-appear flex" : "modal-disappear hidden"
+				loading ? "modal-appear flex absolute" : "modal-disappear hidden"
 			}  bg-black/60 h-screen w-screen justify-center items-center`}
 		>
 			<Image

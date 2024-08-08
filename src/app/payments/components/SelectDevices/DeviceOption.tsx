@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import type { Device } from "../../interfaces/Device";
 import { UsePaymentContext } from "../../context/PaymentContext";
+import { UseServiceFees } from "../../hooks/UseServiceFees";
 
 export default function DeviceOption({ device }: { device: Device }) {
-	const { setDevicesSelected, devicesSelected } = UsePaymentContext();
+	const { setDevicesSelected, devicesSelected, LangStrings } =
+		UsePaymentContext();
+	const { serviceFees } = UseServiceFees(device.id);
 	//CALCULAR HORAS Y MINUTOS
 	let minutes = 0;
 	let hours = 0;
@@ -24,7 +27,7 @@ export default function DeviceOption({ device }: { device: Device }) {
 
 	return (
 		<tr key={device.id} className="border-t">
-			<td className="flex justify-center items-center gap-4 p-4 h-24">
+			<td className="flex justify-center sm:justify-start items-center gap-4 p-4 h-24">
 				<input
 					type="checkbox"
 					name="devicesId"
@@ -33,10 +36,10 @@ export default function DeviceOption({ device }: { device: Device }) {
 					checked={devicesSelected.includes(device)}
 				/>
 				<label htmlFor="devicesId" className="my-auto font-normal">
-					Aire acondicionado {device.id}
+					{LangStrings.GeneralMessages.air} {device.id}
 				</label>
 			</td>
-			<td className="w-1/3 text-center p4">
+			<td className="w-1/3 text-center sm:text-start p4">
 				{hours}h {minutes}m
 			</td>
 		</tr>
