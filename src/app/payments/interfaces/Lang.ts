@@ -24,6 +24,8 @@ interface GeneralMessages {
 	remainTime: string;
 	air: string;
 	select: string;
+	editDetails: string;
+	exit: string;
 }
 
 interface PickApartmentView {

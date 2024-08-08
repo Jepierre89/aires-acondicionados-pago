@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
 import "./globals.css";
+import { PaymentProvider } from "./payments/context/PaymentContext";
+import Head from "next/head";
 
 const ubuntu = Ubuntu({
 	subsets: ["latin"],
@@ -18,8 +20,17 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body className={`${ubuntu.className}  overflow-y-auto`}>{children}</body>
-		</html>
+		<PaymentProvider>
+			<html lang="es">
+				<Head>
+					<script
+						async
+						type="text/javascript"
+						src="https://checkout.wompi.co/widget.js"
+					></script>
+				</Head>
+				<body className={`${ubuntu.className}`}>{children}</body>
+			</html>
+		</PaymentProvider>
 	);
 }

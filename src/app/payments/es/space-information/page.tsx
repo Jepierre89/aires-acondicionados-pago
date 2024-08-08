@@ -14,10 +14,16 @@ export default function SpaceInformation() {
 		lang,
 		setDevicesSelected,
 		setServiceFeesSelected,
+		setLoading,
+		loading,
+		setLangSwitchDisplay,
 	} = UsePaymentContext();
 
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const router = useRouter();
+	useEffect(() => {
+		setLangSwitchDisplay(false);
+	});
 
 	useEffect(() => {
 		setDevicesSelected([]);
@@ -31,40 +37,41 @@ export default function SpaceInformation() {
 	};
 
 	return (
-		<>
-			<header className="text-start border-b border-primary-300">
+		<section
+			className={`h-full py-2 sm:w-full sm:max-w-xl ${
+				loading ? "hidden" : " relative modal-appear flex flex-col"
+			} items-center`}
+		>
+			<header className="border-b-4 py-2 border-primary-300 w-full ">
 				<h1 className="font-bold text-2xl text-secondary-700 my-2 text-center">
 					{LangStrings.SpaceInformation.spaceInformation}
 				</h1>
 				<div className="text-lg">
-					<h3>
+					<h3 className="text-start sm:text-center">
 						<strong>{LangStrings.GeneralMessages.accommodation}: </strong>
 						{buildingId}
 					</h3>
 				</div>
 				<div className="text-lg">
-					<h3>
+					<h3 className="text-start sm:text-center">
 						<strong>{LangStrings.GeneralMessages.apartmentOrRoom}: </strong>
 						{apartmentId}
 					</h3>
 				</div>
 			</header>
 			<hr className="border-y-primary-300 mx-auto my-3 border-t" />
-			<section>
-				<header>
-					<h2 className="flex text-xl font-bold text-secondary-700 max-w-80 text-center">
-						{LangStrings.SpaceInformation.pickDeviceToCharge}
-					</h2>
-				</header>
+			<section className="px-10 w-full">
+				<h2 className="flex text-xl font-bold text-secondary-700 max-w-80 text-center mx-auto">
+					{LangStrings.SpaceInformation.pickDeviceToCharge}
+				</h2>
 				<DevicesCheckTable />
 			</section>
-			<footer className="my-auto">
-				<Button
-					text={LangStrings.GeneralMessages.continue}
-					forward
-					handleClick={handleClick}
-				/>
-			</footer>
-		</>
+			<Button
+				text={LangStrings.GeneralMessages.continue}
+				forward
+				handleClick={handleClick}
+				disabled={devicesSelected.length <= 0}
+			/>
+		</section>
 	);
 }

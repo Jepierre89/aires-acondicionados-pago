@@ -4,8 +4,13 @@ const nextConfig = {
     return [
       {
         source: '/',
-        destination: '/payments',
-        permanent: true,
+        destination: '/payments/es',
+        permanent: false,
+      },
+      {
+        source: '/payments',
+        destination: '/payments/es',
+        permanent: false,
       },
     ];
   },

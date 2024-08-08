@@ -21,7 +21,6 @@ export default function UseApartments() {
 		};
 		const getData = async () => {
 			try {
-				setLoading(true);
 				const response: any = await axios.get(
 					`${process.env.NEXT_PUBLIC_API_URL}/apartments`,
 					query
