@@ -2,7 +2,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { Device } from "../interfaces/Device";
 import Option from "../interfaces/Option";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import langDictionary from "@/app/config/lang.json";
 import { Lang } from "../interfaces/Lang";
 
@@ -60,13 +60,16 @@ export const PaymentProvider = ({
 	const [reference, setReference] = useState("");
 
 	const router = useRouter();
+	const pathName = usePathname();
 
 	useEffect(() => {
-		if (buildingId === -1 || apartmentId === -1) {
-			router.push(`/payments/${lang}`);
-		}
-		if (buildingId !== -1 && apartmentId !== -1) {
-			setLoading(false);
+		if (!pathName.includes("/payment-finished")) {
+			if (buildingId === -1 || apartmentId === -1) {
+				router.push(`/payments/${lang}`);
+			}
+			if (buildingId !== -1 && apartmentId !== -1) {
+				setLoading(false);
+			}
 		}
 	}, [router, lang, apartmentId, buildingId]);
 

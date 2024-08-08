@@ -15,10 +15,9 @@ export default function Page() {
 		UsePaymentContext();
 
 	const { transactionStatus } = UseTransactionStatus();
+
 	useEffect(() => {
-		if (transactionStatus) {
-			console.log(transactionStatus);
-		}
+		console.log(transactionStatus ? transactionStatus : "FALLIDO");
 	}, [transactionStatus]);
 
 	useEffect(() => {

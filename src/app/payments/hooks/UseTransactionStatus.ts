@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { UsePaymentContext } from "../context/PaymentContext";
 
 export function UseTransactionStatus() {
+	const [transaction, setTransaction] = useState({});
 	const [transactionStatus, setTransactionStatus] = useState("");
 	const searchParams = useSearchParams();
 
@@ -19,10 +20,10 @@ export function UseTransactionStatus() {
 					`https://${process.env.NEXT_PUBLIC_FLAG}.wompi.co/v1/transactions/${id}`
 				)
 				.then((response) => {
-					const status = response.data.data.status;
-
-					setTransactionStatus(status);
-					console.log(transactionStatus);
+					const status = response.data;
+					setTransaction(status);
+					setTransactionStatus(status.data.status);
+					console.log(transaction);
 				});
 		} catch (error) {
 			console.error(error);
@@ -30,10 +31,14 @@ export function UseTransactionStatus() {
 			setLoading(false);
 		}
 	};
+	const postData = async () => {
+		console.log(transaction);
+	};
 
 	useEffect(() => {
 		console.log(id);
 		getData();
+		postData();
 	}, [searchParams, transactionStatus]);
 	return {
 		transactionStatus,

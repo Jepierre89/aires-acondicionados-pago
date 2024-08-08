@@ -34,7 +34,7 @@ const PaymentButton = ({ signature }: { signature: string }) => {
 		script.setAttribute("data-signature:integrity", signature);
 		script.setAttribute(
 			"data-redirect-url",
-			`https://7e59bc54a16f426e573b36574cd4d786.serveo.net/payments/es/payment-finished`
+			`https://2dc32a497c2a01ac5df3a29f90999d0b.serveo.net/payments/${context.lang}/payment-finished`
 		);
 
 		script.addEventListener("load", () => {
