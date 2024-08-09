@@ -63,6 +63,11 @@ body {
 	width: 0;
 }
 
+.disappear {
+	opacity: 0;
+	animation: modalAppear 2s 1s forwards ease-in;
+}
+
 /* Animación para aparecer el modal */
 @keyframes modalAppear {
 	from {

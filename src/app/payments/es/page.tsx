@@ -18,6 +18,7 @@ export default function Page() {
 		apartmentId,
 		setLangSwitchDisplay,
 		loading,
+		setLoading,
 	} = UsePaymentContext();
 
 	const router = useRouter();
@@ -25,6 +26,7 @@ export default function Page() {
 	const handleSubmit = useCallback(
 		(e: any) => {
 			e.preventDefault();
+			setLoading(true);
 			console.log(apartmentId, buildingId);
 			if (apartmentId !== -1 && buildingId !== -1) {
 				router.push(`/payments/${lang}/space-information`);

@@ -6,6 +6,8 @@ import { UsePaymentContext } from "../context/PaymentContext";
 export function UseTransactionStatus() {
 	const [transaction, setTransaction] = useState({});
 	const [transactionStatus, setTransactionStatus] = useState("");
+	const [transactionReference, setTransactionReference] = useState("");
+
 	const searchParams = useSearchParams();
 
 	const { setLoading } = UsePaymentContext();
@@ -23,6 +25,8 @@ export function UseTransactionStatus() {
 					const status = response.data;
 					setTransaction(status);
 					setTransactionStatus(status.data.status);
+					setTransactionReference(status.data.reference);
+					console.log(transactionReference);
 					console.log(transaction);
 				});
 		} catch (error) {
@@ -42,5 +46,6 @@ export function UseTransactionStatus() {
 	}, [searchParams, transactionStatus]);
 	return {
 		transactionStatus,
+		transactionReference,
 	};
 }

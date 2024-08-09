@@ -47,7 +47,7 @@ export const PaymentProvider = ({
 }: {
 	children: React.ReactNode;
 }) => {
-	const [apartmentId, setApartmentId] = useState(9);
+	const [apartmentId, setApartmentId] = useState(-1);
 	const [buildingId, setBuildingId] = useState(-1);
 	const [loading, setLoading] = useState(true);
 	const [devicesSelected, setDevicesSelected] = useState([]);

@@ -32,6 +32,7 @@ export default function SpaceInformation() {
 
 	const handleClick = () => {
 		if (devicesSelected.length > 0) {
+			setLoading(true);
 			router.push(`/payments/${lang}/services`);
 		}
 	};

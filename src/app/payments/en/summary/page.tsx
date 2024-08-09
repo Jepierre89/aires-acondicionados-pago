@@ -1,12 +1,13 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { UsePaymentContext } from "../../context/PaymentContext";
 import PaymentSummary from "../../components/PaymentSummary/PaymentSummary";
 import Button from "../../components/CustomComponents/Button";
 import { useRouter } from "next/navigation";
 import UseReferences from "../../hooks/UseReferences";
 import UseIntegritySignature from "../../hooks/UseIntegritySignature";
-import PaymentButton from "@/app/payments/components/CustomComponents/PaymentButton";
+import LoadingButtonWompi from "../../components/CustomComponents/LoadingButtonWompi";
+import PaymentButton from "../../components/CustomComponents/PaymentButton";
 
 export default function Summary() {
 	const { reference } = UseReferences();
@@ -18,6 +19,7 @@ export default function Summary() {
 		loading,
 		setLangSwitchDisplay,
 		setReference,
+		setLoading,
 	} = UsePaymentContext();
 	const router = useRouter();
 
@@ -27,7 +29,8 @@ export default function Summary() {
 	};
 	useEffect(() => {
 		setLangSwitchDisplay(false);
-	}, [setLangSwitchDisplay]);
+		setLoading(false);
+	}, [setLangSwitchDisplay, setLoading]);
 	useEffect(() => {
 		setReference(reference);
 	}, [setReference, reference]);
@@ -52,7 +55,9 @@ export default function Summary() {
 					handleClick={handleClick}
 					textBlack
 				/>
-				<PaymentButton signature={signature} />
+				<LoadingButtonWompi>
+					<PaymentButton signature={signature} />
+				</LoadingButtonWompi>
 			</footer>
 		</section>
 	);

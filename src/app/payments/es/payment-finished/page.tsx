@@ -14,16 +14,13 @@ export default function Page() {
 	const { setLoading, setLangSwitchDisplay, setNavDisplay, loading } =
 		UsePaymentContext();
 
-	const { transactionStatus } = UseTransactionStatus();
-
-	useEffect(() => {
-		console.log(transactionStatus ? transactionStatus : "FALLIDO");
-	}, [transactionStatus]);
+	const { transactionStatus, transactionReference } = UseTransactionStatus();
 
 	useEffect(() => {
 		setLangSwitchDisplay(false);
 		setNavDisplay(false);
 		setLoading(false);
+		console.warn(transactionReference);
 	}, []);
 
 	return (

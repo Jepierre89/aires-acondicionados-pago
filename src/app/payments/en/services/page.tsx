@@ -6,6 +6,8 @@ import Image from "next/image";
 import ServiceFeeOptions from "../../components/SelectFees/ServiceFeeOptions";
 import { useRouter } from "next/navigation";
 import Button from "../../components/CustomComponents/Button";
+import axios from "axios";
+import moment from "moment";
 
 export default function Services() {
 	const {
@@ -17,16 +19,19 @@ export default function Services() {
 		totalPrice,
 		serviceFeesSelected,
 		loading,
+		setLoading,
 		setLangSwitchDisplay,
 	} = UsePaymentContext();
 	const router = useRouter();
 	useEffect(() => {
 		setLangSwitchDisplay(false);
+		setLoading(false);
 		if (!apartmentId || !buildingId || devicesSelected.length <= 0) {
 			router.push(`/payments/${lang}`);
 		}
 	}, [
 		setLangSwitchDisplay,
+		setLoading,
 		apartmentId,
 		buildingId,
 		devicesSelected,
@@ -34,8 +39,28 @@ export default function Services() {
 		router,
 	]);
 
+	//GENERAR PROCESO DE PAGO EN LA BASE DE DATOS
+	const generateProccess = async () => {
+		try {
+			await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/process-of-pays`, {
+				totalValue: totalPrice,
+				date: moment().subtract("5", "hours"),
+			});
+
+			//TODO IDEA para la creacion de pendingPayments, le paso el apartmentID y luego todos los servicesFees que se seleccionaron y el back acomoda todo
+			await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/pending-payments`, {
+				apartmentId,
+				servicesFees: [...serviceFeesSelected],
+			});
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
 	const handleClick = () => {
 		if (serviceFeesSelected.length === devicesSelected.length) {
+			setLoading(true);
+			generateProccess();
 			router.push(`/payments/${lang}/summary`);
 		}
 	};

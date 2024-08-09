@@ -1,9 +1,18 @@
 import React, { useEffect } from "react";
 import { UsePaymentContext } from "../../context/PaymentContext";
 import UseReferences from "../../hooks/UseReferences";
+import axios from "axios";
 
 const PaymentButton = ({ signature }: { signature: string }) => {
 	const context = UsePaymentContext();
+
+	const postPrueba = async () => {
+		axios.post("http://localhost:5048/process-of-pays", {
+			totalValue: 100000,
+			date: new Date(),
+			status: "prueba",
+		});
+	};
 
 	useEffect(() => {
 		const container = document.getElementById("wompi-button-container");
@@ -12,6 +21,8 @@ const PaymentButton = ({ signature }: { signature: string }) => {
 			console.error("Wompi button container not found");
 			return;
 		}
+
+		container.innerHTML = "";
 
 		// Verifica si el script ya está presente
 		if (document.getElementById("wompi-script")) {
@@ -34,7 +45,7 @@ const PaymentButton = ({ signature }: { signature: string }) => {
 		script.setAttribute("data-signature:integrity", signature);
 		script.setAttribute(
 			"data-redirect-url",
-			`https://2dc32a497c2a01ac5df3a29f90999d0b.serveo.net/payments/${context.lang}/payment-finished`
+			`${process.env.NEXT_PUBLIC_CLIENT_URL}/payments/${context.lang}/payment-finished`
 		);
 
 		script.addEventListener("load", () => {
@@ -53,9 +64,14 @@ const PaymentButton = ({ signature }: { signature: string }) => {
 			const existingScript = document.getElementById("wompi-script");
 			if (existingScript) {
 				container.removeChild(existingScript);
+			} else {
+				const form = document.getElementById("wompi-button-container");
+				if (form) {
+					form.innerHTML = "";
+				}
 			}
 		};
-	}, [context.totalPrice, context.reference, signature]);
+	}, [context.totalPrice, context.reference, signature, context.lang]);
 
 	const handleWompiMessage = (event: any) => {
 		if (event.origin !== "https://checkout.wompi.co") return;

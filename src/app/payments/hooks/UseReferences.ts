@@ -5,7 +5,6 @@ import axios from "axios";
 export default function UseReferences() {
 	//TODO Arreglar re renderizado de boton
 	const [reference, setReference] = useState("");
-	const times = useRef(0);
 	useEffect(() => {
 		const generateRandomHex = async () => {
 			const bytes = crypto.lib.WordArray.random(14 / 2);
@@ -37,7 +36,10 @@ export default function UseReferences() {
 			setReference(newReference);
 		};
 		generateRandomHexOnly();
-		times.current++;
+		return () => {
+			setReference("");
+			console.log(reference);
+		};
 	}, []);
 
 	return { reference };

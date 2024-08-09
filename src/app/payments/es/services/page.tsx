@@ -19,16 +19,19 @@ export default function Services() {
 		totalPrice,
 		serviceFeesSelected,
 		loading,
+		setLoading,
 		setLangSwitchDisplay,
 	} = UsePaymentContext();
 	const router = useRouter();
 	useEffect(() => {
 		setLangSwitchDisplay(false);
+		setLoading(false);
 		if (!apartmentId || !buildingId || devicesSelected.length <= 0) {
 			router.push(`/payments/${lang}`);
 		}
 	}, [
 		setLangSwitchDisplay,
+		setLoading,
 		apartmentId,
 		buildingId,
 		devicesSelected,
@@ -56,6 +59,7 @@ export default function Services() {
 
 	const handleClick = () => {
 		if (serviceFeesSelected.length === devicesSelected.length) {
+			setLoading(true);
 			generateProccess();
 			router.push(`/payments/${lang}/summary`);
 		}
