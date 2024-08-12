@@ -47,10 +47,12 @@ export default function Services() {
 				date: moment().subtract("5", "hours"),
 			});
 
-			//TODO IDEA para la creacion de pendingPayments, le paso el apartmentID y luego todos los servicesFees que se seleccionaron y el back acomoda todo
+			//TODO IDEA para la creacion de pendingPayments, le paso el apartmentID y
+			//TODO luego todos los servicesFees que se seleccionaron y el back acomoda todo
 			await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/pending-payments`, {
 				apartmentId,
 				servicesFees: [...serviceFeesSelected],
+				generatedTime: moment().subtract("5", "hours"),
 			});
 		} catch (error) {
 			console.error(error);
@@ -59,6 +61,11 @@ export default function Services() {
 
 	const handleClick = () => {
 		if (serviceFeesSelected.length === devicesSelected.length) {
+			const itemsToShow = serviceFeesSelected.map((item) => item.id);
+			window.localStorage.setItem(
+				"servicesSelected",
+				JSON.stringify(itemsToShow)
+			);
 			setLoading(true);
 			generateProccess();
 			router.push(`/payments/${lang}/summary`);

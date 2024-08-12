@@ -9,17 +9,34 @@ import PaymentDeclined from "../../components/paymentStatus/PaymentDeclined";
 import PaymentRejected from "../../components/paymentStatus/PaymentRejected";
 import { useEffect } from "react";
 import { UseTransactionStatus } from "../../hooks/UseTransactionStatus";
+import UseBuildings from "../../hooks/UseBuildings";
+import UseApartments from "../../hooks/UseApartments";
+import UseServiceInformation from "../../hooks/UseServiceInformation";
+import { Device } from "../../interfaces/Device";
+import { ServicesFeeSelected } from "../../interfaces/ServiceInformation";
 
 export default function Page() {
-	const { setLoading, setLangSwitchDisplay, setNavDisplay, loading } =
-		UsePaymentContext();
+	const {
+		setLoading,
+		setLangSwitchDisplay,
+		setNavDisplay,
+		loading,
+		setBuildingId,
+		setLang,
+	} = UsePaymentContext();
 
 	const { transactionStatus, transactionReference } = UseTransactionStatus();
 
-	useEffect(() => {
+	const services = window.localStorage.getItem("servicesSelected");
+
+	const parsedServices: number[] = services ? JSON.parse(services) : null;
+	const { serviceInformation } = UseServiceInformation(parsedServices || []);
+
+	const servicesSelected = useEffect(() => {
 		setLangSwitchDisplay(false);
 		setNavDisplay(false);
 		setLoading(false);
+		setLang(window.localStorage.getItem("lang") || "es");
 		console.warn(transactionReference);
 	}, []);
 
@@ -38,13 +55,17 @@ export default function Page() {
 				<section className="text-center -my-5 flex flex-col items-center justify-center gap-3">
 					<article>
 						<h3 className="font-normal text-base">Alojamiento:</h3>
-						<p className="text-2xl font-bold">Housinn</p>
+						<p className="text-2xl font-bold">
+							{serviceInformation && serviceInformation.buildingSelected.name}
+						</p>
 					</article>
 					<article>
 						<h3 className="font-base text-base">Aires acondicionados:</h3>
 						<div className="font-bold text-2xl flex flex-nowrap justify-center">
-							<p>Aire 1 -</p>
-							<p> Aire 2</p>
+							{serviceInformation &&
+								serviceInformation.devicesSelected.map((device) => {
+									return <p key={device[0].id}>{device[0].id}</p>;
+								})}
 						</div>
 					</article>
 					<article>
@@ -52,8 +73,21 @@ export default function Page() {
 							Tiempo de uso para cada dispositivo:
 						</h3>
 						<div className="font-bold text-2xl">
-							<h4>8 horas</h4>
-							<h4>9 horas</h4>
+							{serviceInformation?.servicesFeeSelected.map(
+								(fees: ServicesFeeSelected) => {
+									let minutes = 0;
+									let hours = 0;
+									const seconds = fees.duration || 0;
+									hours = Math.floor(seconds / 3600);
+									minutes = Math.floor((seconds % 3600) / 60);
+
+									return (
+										<h4 key={fees.id} className="text-2xlfont-bold">
+											{hours}h {minutes}m ({fees.devicesId})
+										</h4>
+									);
+								}
+							)}
 						</div>
 					</article>
 					<picture className="text-center flex items-center flex-col">

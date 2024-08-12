@@ -13,8 +13,8 @@ export default function PaymentSummary() {
 		Object.create(null);
 	return (
 		<>
-			<section className="border-4 rounded-lg border-primary-300 flex flex-col items-center py-4 bg-white ">
-				<h2 className="font-normal text-lg">
+			<section className="border-4 rounded-lg border-primary-300 flex flex-col items-center py-4 bg-white min-w-80">
+				<h2 className="font-normal text-lg min-h-10">
 					{LangStrings.GeneralMessages.ubication}:
 				</h2>
 				<article className="px-3 text-center">

@@ -33,6 +33,7 @@ export default function SpaceInformation() {
 	const handleClick = () => {
 		if (devicesSelected.length > 0) {
 			setLoading(true);
+			window.localStorage.setItem("lang", lang);
 			router.push(`/payments/${lang}/services`);
 		}
 	};

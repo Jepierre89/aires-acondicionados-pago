@@ -45,7 +45,7 @@ const PaymentButton = ({ signature }: { signature: string }) => {
 		script.setAttribute("data-signature:integrity", signature);
 		script.setAttribute(
 			"data-redirect-url",
-			`${process.env.NEXT_PUBLIC_CLIENT_URL}/payments/${context.lang}/payment-finished`
+			`${process.env.NEXT_PUBLIC_CLIENT_URL}/payments/${context.lang}/payment-finished?lang=${context.lang}`
 		);
 
 		script.addEventListener("load", () => {
