@@ -13,7 +13,7 @@ export default function RootLayout({
 		<>
 			<ToggleLang />
 			<main
-				className={`flex flex-col items-center h-screen justify-center sm:w-full sm:max-w-4xl max-w-xs my-auto`}
+				className={`flex flex-col items-center justify-center sm:w-full sm:max-w-4xl max-w-xs overflow-x-hidden h-full`}
 			>
 				{children}
 			</main>

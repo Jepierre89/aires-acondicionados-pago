@@ -1,110 +1,122 @@
 {
-  "es": {
-    "GeneralMessages": {
-      "ubication": "Ubicación",
-      "apartmentOrRoom": "Apartamento o habitación",
-      "continue": "Continuar",
-      "return": "Volver",
-      "returnToStart": "Regresar al inicio",
-      "accommodation": "Alojamiento",
-      "device": "Dispositivo",
-      "remainTime": "Tiempo disponible",
-      "air": "Aire",
-      "select": "Seleccionar",
-      "editDetails": "Editar detalles",
-      "exit": "Salir"
-    },
-    "ModalMessages":{
-        "currentSpace": "El espacio seleccionado",
-        "strongErrorMessage": "no cuenta con un aire acondicionado disponible.",
-        "pickAnother": "Selecciona uno diferente, por favor."
-    },
-    "PickApartmentView": {
-      "hello": "¡Hola!",
-      "welcomeMessage": "Aquí puedes recargar el uso de aire acondicionado",
-      "informationMessage1": "Recarga el tiempo de consumo del aire acondicionado de tu espacio en cualquier momento.",
-      "informationMessage2": "Selecciona tu alojamiento y número de apartamento o habitación:",
-      "pickYourLocation": "Selecciona tu ubicación",
-      "pickTheNumber": "Selecciona el número correspondiente"
-    },
-    "SpaceInformation": {
-      "pickDeviceToCharge": "Selecciona el dispositivo que vas a recargar",
-      "spaceInformation":  "Información de tu espacio"
-    },
-    "PickTimeToCharge": {
-      "TimeOptions": "Paquetes de tiempo",
-      "informationMessage1": "Selecciona el tiempo que vas a recargar para cada uno de los aires acondicionados",
-      "reminder": "Recuerda que:",
-      "reminderInformation1": "Cada vez que compres un paquete de tiempo, se acumulará automáticamente al tiempo de uso disponible de cada dispositivo.",
-      "reminderInformation2": "El tiempo de uso sólo se descontará cuando el dispositivo esté encendido.",
-      "pickUseTime": "Selecciona el tiempo de uso"
-    },
-    "Summary": {
-      "paymentSummary": "Resumen de compra: ",
-      "selectedDevices": "Dispositivos seleccionados: ",
-      "timeToUsePerDevice": "Tiempo de uso para cada uno: ",
-      "totalPayment": "Valor a pagar:"
-    },
-    "FinalPaymentSummary": {
-      "paymentSummary": "Resumen de pago",
-      "successfullyPayment": "Pago realizado exitosamente",
-      "informationMessage1": "Has recargado el tiempo de uso de los aires acondicionados de tu espacio.",
-      "enjoy": "Disfrute su estadía",
-      "getMoreTime": "Adquirir más tiempo"
-    }
-  },
-  "en": {
-    "GeneralMessages": {
-      "ubication": "Location",
-      "apartmentOrRoom": "Apartment or room",
-      "continue": "Continue",
-      "return": "back",
-      "returnToStart": "Back to start",
-      "accommodation": "Accommodation",
-      "device": "Device",
-      "remainTime": "Remaining time",
-      "air": "Air",
-      "select": "Select",
-      "editDetails": "Edit details",
-      "exit": "Exit"
-    },
-    "PickApartmentView": {
-      "hello": "Hello!",
-      "welcomeMessage": "Here you can recharge the use of air conditioning",
-      "informationMessage1": "Recharge the air conditioning usage time of your space at any time.",
-      "informationMessage2": "Select your accommodation and apartment or room number:",
-      "pickYourLocation": "Pick your acommodation",
-      "pickTheNumber": "Pick the corresponding number"
-    },
-    "SpaceInformation": {
-      "pickDeviceToCharge": "Select the device you want to recharge",
-      "spaceInformation": "Acommodation information"
-    },
-    "PickTimeToCharge": {
-      "TimeOptions": "Time packages",
-      "informationMessage1": "Select the time you want to recharge for each air conditioner",
-      "reminder": "Remember that:",
-      "reminderInformation1": "Each time you purchase a time package, it will automatically accumulate to the available usage time of each device.",
-      "reminderInformation2": "Usage time will only be deducted when the device is turned on.",
-      "pickUseTime": "Select the usage time"
-    },
-    "Summary": {
-      "paymentSummary": "Purchase summary: ",
-      "selectedDevices": "Selected devices: ",
-      "timeToUsePerDevice": "Time to use for each one: ",
-      "totalPayment": "Total payment:"
-    },
-    "FinalPaymentSummary": {
-      "paymentSummary": "Payment summary",
-      "successfullyPayment": "Payment successfully completed",
-      "informationMessage1": "You have recharged the usage time of the air conditioners in your space.",
-      "enjoy": "Enjoy your stay",
-      "getMoreTime": "Get more time"
-    },
-    "ModalMessages": {
-      "currentSpace": "The selected space",
-      "strongErrorMessage": "does not have an available air conditioner.",
-      "pickAnother": "Please select a different one."
-    }
-  }
+	"es": {
+		"GeneralMessages": {
+			"ubication": "Ubicación",
+			"apartmentOrRoom": "Apartamento o habitación",
+			"continue": "Continuar",
+			"return": "Volver",
+			"returnToStart": "Regresar al inicio",
+			"accommodation": "Alojamiento",
+			"device": "Dispositivo",
+			"remainTime": "Tiempo disponible",
+			"air": "Aire",
+			"select": "Seleccionar",
+			"editDetails": "Editar detalles",
+			"exit": "Salir",
+			"chargeAir": "Recargar aire acondicionado"
+		},
+		"ModalMessages": {
+			"currentSpace": "El espacio seleccionado",
+			"strongErrorMessage": "no cuenta con un aire acondicionado disponible.",
+			"pickAnother": "Selecciona uno diferente, por favor."
+		},
+		"StartAplicationView": {
+			"fresh": "Frescura con conciencia a precios justos",
+			"informationMessage1": "En nuestro compromiso por ofrecerte tarifas de hospedaje más competitivas, realizamos el cobro por el uso de aire acondicionado.",
+			"informationMessage2": "Así, disfrutamos de un ambiente fresco y ayudamos al planeta, manteniendo al mismo tiempo los precios accesibles para ti."
+		},
+		"PickApartmentView": {
+			"hello": "¡Hola!",
+			"welcomeMessage": "Aquí puedes recargar el uso de aire acondicionado",
+			"informationMessage1": "Recarga el tiempo de consumo del aire acondicionado de tu espacio en cualquier momento.",
+			"informationMessage2": "Selecciona tu alojamiento y número de apartamento o habitación:",
+			"pickYourLocation": "Selecciona tu ubicación",
+			"pickTheNumber": "Selecciona el número correspondiente"
+		},
+		"SpaceInformation": {
+			"pickDeviceToCharge": "Selecciona el dispositivo que vas a recargar",
+			"spaceInformation": "Información de tu espacio"
+		},
+		"PickTimeToCharge": {
+			"TimeOptions": "Paquetes de tiempo",
+			"informationMessage1": "Selecciona el tiempo que vas a recargar para cada uno de los aires acondicionados",
+			"reminder": "Recuerda que:",
+			"reminderInformation1": "Cada vez que compres un paquete de tiempo, se acumulará automáticamente al tiempo de uso disponible de cada dispositivo.",
+			"reminderInformation2": "El tiempo de uso sólo se descontará cuando el dispositivo esté encendido.",
+			"pickUseTime": "Selecciona el tiempo de uso"
+		},
+		"Summary": {
+			"paymentSummary": "Resumen de compra: ",
+			"selectedDevices": "Dispositivos seleccionados: ",
+			"timeToUsePerDevice": "Tiempo de uso para cada uno: ",
+			"totalPayment": "Valor a pagar:"
+		},
+		"FinalPaymentSummary": {
+			"paymentSummary": "Resumen de pago",
+			"successfullyPayment": "Pago realizado exitosamente",
+			"informationMessage1": "Has recargado el tiempo de uso de los aires acondicionados de tu espacio.",
+			"enjoy": "Disfrute su estadía",
+			"getMoreTime": "Adquirir más tiempo"
+		}
+	},
+	"en": {
+		"GeneralMessages": {
+			"ubication": "Location",
+			"apartmentOrRoom": "Apartment or room",
+			"continue": "Continue",
+			"return": "back",
+			"returnToStart": "Back to start",
+			"accommodation": "Accommodation",
+			"device": "Device",
+			"remainTime": "Remaining time",
+			"air": "Air",
+			"select": "Select",
+			"editDetails": "Edit details",
+			"exit": "Exit",
+			"chargeAir": "recharge air conditioner"
+		},
+		"StartAplicationView": {
+			"fresh": "Freshness with conscience at fair prices",
+			"informationMessage1": "In our commitment to offering you more competitive lodging rates, we charge for the use of air conditioning.",
+			"informationMessage2": "This way, we enjoy a cool environment and help the planet, while keeping prices affordable for you."
+		},
+		"PickApartmentView": {
+			"hello": "Hello!",
+			"welcomeMessage": "Here you can recharge the use of air conditioning",
+			"informationMessage1": "Recharge the air conditioning usage time of your space at any time.",
+			"informationMessage2": "Select your accommodation and apartment or room number:",
+			"pickYourLocation": "Pick your acommodation",
+			"pickTheNumber": "Pick the corresponding number"
+		},
+		"SpaceInformation": {
+			"pickDeviceToCharge": "Select the device you want to recharge",
+			"spaceInformation": "Acommodation information"
+		},
+		"PickTimeToCharge": {
+			"TimeOptions": "Time packages",
+			"informationMessage1": "Select the time you want to recharge for each air conditioner",
+			"reminder": "Remember that:",
+			"reminderInformation1": "Each time you purchase a time package, it will automatically accumulate to the available usage time of each device.",
+			"reminderInformation2": "Usage time will only be deducted when the device is turned on.",
+			"pickUseTime": "Select the usage time"
+		},
+		"Summary": {
+			"paymentSummary": "Purchase summary: ",
+			"selectedDevices": "Selected devices: ",
+			"timeToUsePerDevice": "Time to use for each one: ",
+			"totalPayment": "Total payment:"
+		},
+		"FinalPaymentSummary": {
+			"paymentSummary": "Payment summary",
+			"successfullyPayment": "Payment successfully completed",
+			"informationMessage1": "You have recharged the usage time of the air conditioners in your space.",
+			"enjoy": "Enjoy your stay",
+			"getMoreTime": "Get more time"
+		},
+		"ModalMessages": {
+			"currentSpace": "The selected space",
+			"strongErrorMessage": "does not have an available air conditioner.",
+			"pickAnother": "Please select a different one."
+		}
+	}
 }

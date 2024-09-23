@@ -32,7 +32,9 @@ interface PaymentContextType {
 	setNavDisplay: (display: boolean) => void;
 }
 
-const PaymentContex = createContext<PaymentContextType | undefined>(undefined);
+export const PaymentContex = createContext<PaymentContextType | undefined>(
+	undefined
+);
 
 export const UsePaymentContext = () => {
 	const context = useContext(PaymentContex);
@@ -63,14 +65,26 @@ export const PaymentProvider = ({
 	const pathName = usePathname();
 
 	useEffect(() => {
-		if (!pathName.includes("/payment-finished")) {
+		if (
+			!(
+				pathName.includes("/payment-finished") ||
+				pathName === "/payments/es" ||
+				pathName === "/payments/en" ||
+				pathName === "/payments/es/home" ||
+				pathName === "/payments/en/home"
+			)
+		) {
+			console.error("entro al useEffect");
 			if (buildingId === -1 || apartmentId === -1) {
-				router.push(`/payments/${lang}`);
+				router.push(`/payments/${lang}/home`);
 			}
 			if (buildingId !== -1 && apartmentId !== -1) {
 				setLoading(false);
 			}
 		}
+		return () => {
+			// cleanup code
+		};
 	}, [router, lang, apartmentId, buildingId]);
 
 	function getLangStrings(lang: string): Lang {

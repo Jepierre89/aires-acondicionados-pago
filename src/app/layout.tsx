@@ -29,7 +29,7 @@ export default function RootLayout({
 						src="https://checkout.wompi.co/widget.js"
 					></script>
 				</Head>
-				<body className={`${ubuntu.className}`}>{children}</body>
+				<body className={`${ubuntu.className} h-screen`}>{children}</body>
 			</html>
 		</PaymentProvider>
 	);

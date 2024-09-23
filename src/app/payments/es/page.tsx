@@ -1,12 +1,12 @@
 "use client";
 import React, { lazy, Suspense, useCallback, useEffect, useState } from "react";
-import { UsePaymentContext } from "../context/PaymentContext";
-import ApartmentSelect from "../components/SelectApartment/ApartmentSelect";
-import BuildingSelect from "../components/SelectBuilding/BuildingSelect";
+import { PaymentContex, UsePaymentContext } from "../context/PaymentContext";
+import ENERGY_SAVING from "@/assets/ENERGY_SAVING.png";
 import Button from "../components/CustomComponents/Button";
 import { useRouter } from "next/navigation";
 import ModalError from "../components/modals/ModalError";
 import Footer from "../components/CustomComponents/Footer";
+import Image from "next/image";
 
 export default function Page() {
 	const [activeModalError, setActiveModalError] = useState(false);
@@ -21,21 +21,16 @@ export default function Page() {
 		setLoading,
 	} = UsePaymentContext();
 
-	const router = useRouter();
+	const handleClick = () => {
+		router.push(`/payments/${lang}/home`);
+	};
 
-	const handleSubmit = useCallback(
-		(e: any) => {
-			e.preventDefault();
-			setLoading(true);
-			console.log(apartmentId, buildingId);
-			if (apartmentId !== -1 && buildingId !== -1) {
-				router.push(`/payments/${lang}/space-information`);
-			} else {
-				setActiveModalError(true);
-			}
-		},
-		[apartmentId, buildingId, lang, router]
-	);
+	useEffect(() => {
+		setLoading(false);
+		return () => setLoading(true);
+	}, []);
+
+	const router = useRouter();
 	useEffect(() => {
 		setLangSwitchDisplay(true);
 	}, [setLangSwitchDisplay]);
@@ -43,43 +38,34 @@ export default function Page() {
 	return (
 		<section
 			className={`h-full py-2 ${
-				loading ? "hidden" : "modal-appear flex flex-col"
+				loading ? "hidden" : "modal-appear"
 			} items-center`}
 		>
 			<header className="text-center text-secondary-700 font-bold text-2xl px-7 sm:mb-9">
-				<h1>{LangStrings.PickApartmentView.hello}</h1>
-				<h2>{LangStrings.PickApartmentView.welcomeMessage}</h2>
+				<h1>{LangStrings.StartAplicationView.fresh}</h1>
 			</header>
 			<section className="px-10">
 				<article className="font-normal text-lg text-start h-min items-center">
 					<p className="mb-2">
-						{LangStrings.PickApartmentView.informationMessage1}
+						{LangStrings.StartAplicationView.informationMessage1}
 					</p>
-					<p>{LangStrings.PickApartmentView.informationMessage2}</p>
+					<p>{LangStrings.StartAplicationView.informationMessage2}</p>
 				</article>
-				<form
-					className="w-full flex items-center flex-col my-6 gap-6"
-					onSubmit={handleSubmit}
-				>
-					<div>
-						<label className="font-bold text-secondary-700 text-lg">
-							{LangStrings.GeneralMessages.accommodation}
-						</label>
-						<BuildingSelect />
-					</div>
-					<div>
-						<label className="font-bold text-secondary-700 text-lg">
-							{LangStrings.GeneralMessages.apartmentOrRoom}
-						</label>
-						<ApartmentSelect />
-					</div>
+				<div className="flex flex-col items-center">
+					<picture className="w-full flex items-center flex-col my-6 gap-6">
+						<Image
+							src={ENERGY_SAVING}
+							width={175}
+							height={100}
+							alt="..."
+						></Image>
+					</picture>
 					<Button
-						handleClick={() => {}}
-						text={LangStrings.GeneralMessages.continue}
 						forward
-						disabled={apartmentId === -1 || buildingId === -1}
-					/>
-				</form>
+						text={LangStrings.GeneralMessages.chargeAir}
+						handleClick={handleClick}
+					></Button>
+				</div>
 				<ModalError
 					activeModalError={activeModalError}
 					setActiveModalError={setActiveModalError}

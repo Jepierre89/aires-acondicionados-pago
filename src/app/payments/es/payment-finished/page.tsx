@@ -53,7 +53,7 @@ export default function Page() {
 				) : (
 					""
 				)}
-				<section className="text-center -my-5 flex flex-col items-center justify-center gap-3">
+				<section className="text-center -my-5 items-center justify-center gap-3 grid">
 					<article>
 						<h3 className="font-normal text-base">Alojamiento:</h3>
 						<p className="text-2xl font-bold">

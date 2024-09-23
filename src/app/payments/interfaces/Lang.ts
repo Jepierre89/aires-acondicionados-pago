@@ -6,6 +6,7 @@ export interface Lang {
 	Summary: Summary;
 	FinalPaymentSummary: FinalPaymentSummary;
 	ModalMessages: ModalMessages;
+	StartAplicationView: StartAplicationView;
 }
 interface ModalMessages {
 	currentSpace: string;
@@ -26,6 +27,13 @@ interface GeneralMessages {
 	select: string;
 	editDetails: string;
 	exit: string;
+	chargeAir: string;
+}
+
+interface StartAplicationView {
+	fresh: string;
+	informationMessage1: string;
+	informationMessage2: string;
 }
 
 interface PickApartmentView {
